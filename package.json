@@ -2,7 +2,7 @@
   "name": "microfrontend-app",
   "version": "1.0.0",
   "scripts": {
-    "start": "npm run start:container && npm run start:marketing",
+    "start": "npm run start:container & npm run start:marketing",
     "start:container": "cd packages/container && npm run start",
     "start:marketing": "cd packages/marketing && npm run start",
     "build": "npm run build:container && npm run build:marketing",
