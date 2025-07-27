@@ -1,0 +1,17 @@
+{
+  "name": "microfrontend-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm run start:container && npm run start:marketing",
+    "start:container": "cd packages/container && npm run start",
+    "start:marketing": "cd packages/marketing && npm run start",
+    "build": "npm run build:container && npm run build:marketing",
+    "build:container": "cd packages/container && npm run build",
+    "build:marketing": "cd packages/marketing && npm run build",
+    "serve:prod": "node serve-prod.js",
+    "start:prod": "npm run build && npm run serve:prod"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+} 
