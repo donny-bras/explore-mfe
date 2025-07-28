@@ -1,28 +1,21 @@
 const { merge } = require("webpack-merge");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const commonConfig = require("./webpack.common");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const commonConfig = require("./webpack.common");
 const packageJson = require("../package.json");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const PORT = 8081;
-
-const devConfig = {
-  mode: "development",
+const prodConfig = {
+  mode: "production",
   output: {
-    publicPath: `http://localhost:${PORT}/`,
-  },
-  devServer: {
-    port: PORT,
-    historyApiFallback: {
-      index: "/index.html",
-    },
+    filename: "[name].[contenthash].js",
+    publicPath: "/auth/latest/",
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "marketing",
+      name: "auth",
       filename: "remoteEntry.js",
       exposes: {
-        "./MarketingApp": "./src/bootstrap",
+        "./AuthApp": "./src/bootstrap",
       },
       shared: packageJson.dependencies,
     }),
@@ -32,4 +25,4 @@ const devConfig = {
   ],
 };
 
-module.exports = merge(commonConfig, devConfig);
+module.exports = merge(commonConfig, prodConfig);
