@@ -2,9 +2,11 @@
   "name": "microfrontend-app",
   "version": "1.0.0",
   "scripts": {
-    "start": "npm run start:container & npm run start:marketing",
+    "start": "npm run start:container & npm run start:marketing & npm run start:auth & npm run start:dashboard",
     "start:container": "cd packages/container && npm run start",
     "start:marketing": "cd packages/marketing && npm run start",
+    "start:auth": "cd packages/auth && npm run start",
+    "start:dashboard": "cd packages/dashboard && npm run start",
     "build": "npm run build:container && npm run build:marketing",
     "build:container": "cd packages/container && npm run build",
     "build:marketing": "cd packages/marketing && npm run build",
@@ -14,4 +16,4 @@
   "devDependencies": {
     "http-server": "^14.1.1"
   }
-} 
+}
